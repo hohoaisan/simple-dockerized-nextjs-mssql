@@ -9,6 +9,7 @@
 1. Clone this repository `git clone https://github.com/hohoaisan/simple-dockerized-nextjs-mssql.git`
 2. Change your terminal working directory to cloned folder `cd simple-dockerized-nextjs-mssql`
 3. Simply run `docker-compose up` and wait for it (for the first time, Docker has to pull heavy images from Docker Hub, so the time is suprisingly longer than the next time you build this)
+4. Open http://locahost:3000 on the browser to view the result
 ### Developing with live reload enabled
 Notice: Live reloading only works if the original files are stored in the Linux filesystem ([reason](https://docs.docker.com/docker-for-windows/wsl/#best-practices)), so basically when you make changes to the source code in Windows folder, it'll not work, I recommend clonning and running this in [WSL2](https://docs.docker.com/docker-for-windows/wsl/).
 1. Clone this repository `git clone https://github.com/hohoaisan/simple-dockerized-nextjs-mssql.git`
@@ -16,6 +17,7 @@ Notice: Live reloading only works if the original files are stored in the Linux 
 3. Change the config (database name/password - make sure nextjs and mssql have the same config, ports, uncomment `command: yarn dev` in nextjs config to override production build
 4. Run `docker-compose up`
 5. Make changes to the source code and live reload will do the rest for you
+4. Open http://locahost:3000 on the browser to view the result
 ## 
 Since you want to stop the project, change your terminal working directory to cloned folder:
 - `docker-compose stop` or just `Ctrl+C` in the console to stop running containers
