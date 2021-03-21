@@ -23,7 +23,7 @@ services:
       - 3000:3000
     hostname: nodejs
     # Run container as production mode by default, uncomment to enable dev mode (live reload enabled)
-    command: yarn dev
+    # command: yarn dev
     environment: 
       - USER_NAME=sa
       - PASSWORD=asd.QWE.123
