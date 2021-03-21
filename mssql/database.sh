@@ -1,10 +1,10 @@
-# Wait for SQL Server staring up
+# Wait for SQL Server finishes starting up
 sleep 20s
 attempt=1
 rate=10
 while [ $attempt -le $rate ]
 do
-  # Attempt to initialize first database
+  # Attempt to initialize database
   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "${SA_PASSWORD}" -Q "CREATE DATABASE ${DATABASE_NAME}"
   FILE=./database.sql
   if test -f "$FILE"; then
