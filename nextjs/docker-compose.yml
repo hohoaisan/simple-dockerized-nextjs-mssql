@@ -1,0 +1,41 @@
+# https://www.freecodecamp.org/news/how-to-enable-live-reload-on-docker-based-applications/
+version: '3'
+services: 
+  mssql:
+    container_name: mssql
+    hostname: mssql
+    build: ./mssql
+    ports: 
+      - 1433:1433
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=asd.QWE.123
+      - DATABASE_NAME=temp
+      - MSSQL_PID=Express
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+  nextjs:
+    container_name: nextjs
+    build: ./nextjs
+    ports: 
+      - 3000:3000
+    hostname: nodejs
+    command: yarn dev
+    environment: 
+      - USER_NAME=sa
+      - PASSWORD=asd.QWE.123
+      - DATABASE_NAME=temp
+      - HOST_NAME=mssql
+    volumes: 
+      - ./nextjs:/src/
+      - nextjs_node_modules:/src/node_modules
+    links:
+      - mssql
+    depends_on: 
+      - mssql
+volumes:
+    nextjs_node_modules: {}
+# docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=asd.QWE.123" -p 1433:1433 --name sqlserver -h sqlserver -d mcr.microsoft.com/mssql/server:2017-latest
+# docker run -it -p 3000:3000 -v ~/Docker/nextjs:/src -v nextjs_node_modules:/src/node_modules next dev
