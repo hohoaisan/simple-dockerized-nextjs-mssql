@@ -22,7 +22,7 @@ services:
     ports: 
       - 3000:3000
     hostname: nodejs
-    # Run container by dev mode by default, remove to use it as production
+    # Run container as production mode by default, uncomment to enable dev mode (live reload enabled)
     command: yarn dev
     environment: 
       - USER_NAME=sa
